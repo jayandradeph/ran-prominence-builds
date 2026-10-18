@@ -5,7 +5,7 @@ debug symbols and signing credentials do not belong in this repository.
 
 This builder is active for a port in progress. Windows builds Game.exe and
 Emulator.exe. Android ARM64/x86-64 and iOS ARM64 currently build only the shared
-hash, asset-codec and archive libraries/probes. A green mobile job does not produce a playable
+hash, asset-codec, archive, encrypted-resource and Lua libraries/probes. A green mobile job does not produce a playable
 game, APK or IPA. Servers and editors remain Windows-only.
 
 An administrator must configure `PROMINENCE_SOURCE_REPOSITORY` as the private
