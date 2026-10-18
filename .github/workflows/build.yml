@@ -72,6 +72,10 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
+      - name: Enable long Windows checkout paths
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: git config --global core.longpaths true
       - name: Check out the resolved private commit
         id: source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -82,11 +86,6 @@ jobs:
           persist-credentials: false
           show-progress: false
           path: private-source
-      - name: Install pinned Android native tools
-        if: startsWith(matrix.target, 'android-')
-        shell: bash
-        run: |
-          sdkmanager 'ndk;27.2.12479018' 'cmake;3.22.1'
       - name: Build with private compiler output
         shell: python
         env:
