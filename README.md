@@ -21,9 +21,10 @@ Runs use isolated runner workspaces and unique private release tags, so separate
 revisions can build concurrently without canceling an earlier build.
 Products, result.json, hashes and compiler logs are uploaded to draft releases
 in the private source repository. Failed builds deliver diagnostics without
-claiming success. [Cloud run 39108573963](https://github.com/jayandradeph/ran-prominence-builds/actions/runs/39108573963)
+claiming success. [Cloud run 39113804991](https://github.com/jayandradeph/ran-prominence-builds/actions/runs/39113804991)
 passed Windows clients and all three mobile library/probe targets. This verifies
-the current shared-data and archive port stage; iOS signing, app packaging and gameplay
+the shared-data, archive, encrypted-resource and Lua port stage. Windows also
+verifies the retained widget package. iOS signing, app packaging and gameplay
 remain separate unfinished work.
 
 Export only this README, AGENTS.md and `.github/workflows/build.yml` into the
