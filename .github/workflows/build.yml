@@ -10,9 +10,8 @@ on:
         required: true
 permissions:
   contents: read
-concurrency:
-  group: prominence-builds
-  cancel-in-progress: false
+# Each run resolves an immutable source revision and writes unique private
+# ci-<run>-<attempt>-<target> releases. Independent revisions can build together.
 jobs:
   plan:
     runs-on: ubuntu-latest

@@ -17,6 +17,8 @@ variable or paste it into files. Keep workflow write access restricted.
 
 Run **Build RAN Prominence (port in progress)** manually. Every selected job uses
 one resolved main commit. There are no PR triggers, public artifacts or caches.
+Runs use isolated runner workspaces and unique private release tags, so separate
+revisions can build concurrently without canceling an earlier build.
 Products, result.json, hashes and compiler logs are uploaded to draft releases
 in the private source repository. Failed builds deliver diagnostics without
 claiming success. [Cloud run 39108573963](https://github.com/jayandradeph/ran-prominence-builds/actions/runs/39108573963)
