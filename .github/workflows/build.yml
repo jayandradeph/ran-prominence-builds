@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       platform:
-        description: Windows clients or mobile shared-code baseline (not a mobile game yet)
+        description: Windows clients, Android portability probes, or iOS online Game
         type: choice
         options: [all, windows, mobile, android, ios]
         default: all

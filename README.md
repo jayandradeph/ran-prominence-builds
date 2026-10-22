@@ -4,9 +4,10 @@ Public orchestration only. Game source, assets, compiler logs, libraries, apps,
 debug symbols and signing credentials do not belong in this repository.
 
 This builder is active for a port in progress. Windows builds Game.exe and
-Emulator.exe. Android ARM64/x86-64 and iOS ARM64 currently build only the shared
-hash, asset-codec, archive, encrypted-resource and Lua libraries/probes. A green mobile job does not produce a playable
-game, APK or IPA. Servers and editors remain Windows-only.
+Emulator.exe. Android ARM64/x86-64 builds shared data libraries/probes. The iOS
+ARM64 job explicitly builds the separate online Game app and unsigned IPA for
+physical iPhones. Emulator is a separate offline development product. Build
+success does not establish device gameplay. Servers and editors remain Windows-only.
 
 An administrator must configure `PROMINENCE_SOURCE_REPOSITORY` as the private
 owner/repository, and repository secret `PROMINENCE_SOURCE_TOKEN` with contents
@@ -24,8 +25,9 @@ in the private source repository. Failed builds deliver diagnostics without
 claiming success. [Cloud run 39113804991](https://github.com/jayandradeph/ran-prominence-builds/actions/runs/39113804991)
 passed Windows clients and all three mobile library/probe targets. This verifies
 the shared-data, archive, encrypted-resource and Lua port stage. Windows also
-verifies the retained widget package. iOS signing, app packaging and gameplay
-remain separate unfinished work.
+verifies the retained widget package. That run is historical library evidence;
+current iOS jobs produce the Game IPA. AltStore signing and physical gameplay
+validation remain separate from build verification.
 
 Export only this README, AGENTS.md and `.github/workflows/build.yml` into the
 public repository. Do not publish the surrounding private source workspace.
