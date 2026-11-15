@@ -13,11 +13,18 @@ An administrator must configure `PROMINENCE_SOURCE_REPOSITORY` as the private
 owner/repository, and repository secret `PROMINENCE_SOURCE_TOKEN` with contents
 read/write access to that private source repository. Prefer a fine-grained token
 limited to that repository. The token is used to
-check out reviewed main and deliver private draft releases. Never store it as a
+check out reviewed main, restore/save private compiler caches, and deliver private draft releases. Never store it as a
 variable or paste it into files. Keep workflow write access restricted.
 
 Run **Build RAN Prominence (port in progress)** manually. Every selected job uses
-one resolved main commit. There are no PR triggers, public artifacts or caches.
+one resolved main commit. There are no PR triggers, public artifacts or public caches.
+The iOS build reuses compiler results through authenticated draft releases in the
+private source repository. Compiler/SDK and build-rule changes invalidate incompatible
+caches; changed headers invalidate precompiled-header results. Cache failures fall
+back to a normal build. Cache statistics
+and stage timings are delivered privately with the build receipt; only successful
+builds save cache snapshots. Three completed snapshots are retained per compatibility
+key. Cache releases are separate from product releases and contain no credentials.
 Runs use isolated runner workspaces and unique private release tags, so separate
 revisions can build concurrently without canceling an earlier build.
 Products, result.json, hashes and compiler logs are uploaded to draft releases

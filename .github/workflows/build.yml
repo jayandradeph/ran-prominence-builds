@@ -90,6 +90,9 @@ jobs:
         env:
           PROMINENCE_TARGET: ${{ matrix.target }}
           PROMINENCE_COMMIT: ${{ needs.plan.outputs.commit }}
+          PROMINENCE_PRIVATE_CACHE: '1'
+          PROMINENCE_SOURCE_REPOSITORY: ${{ vars.PROMINENCE_SOURCE_REPOSITORY }}
+          PROMINENCE_SOURCE_TOKEN: ${{ secrets.PROMINENCE_SOURCE_TOKEN }}
         run: |
           import os, pathlib, subprocess, sys
           try:
